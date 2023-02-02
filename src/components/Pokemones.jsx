@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { obtenerPokemonAccion } from "../redux/pokeDucks";
+import { obtenerPokemonAccion,siguientePokemonAccion } from "../redux/pokeDucks";
 
 const Pokemones = () => {
   // Esta funcion me permite entrar a la funcion obtenerPokemonAccion de tal manera que me permite ejecutar una peticion a una api o alguna accion que programamos en pokeDucks
@@ -15,10 +15,14 @@ const Pokemones = () => {
       <button onClick={() => dispatch(obtenerPokemonAccion())}>
         Get pokemons
       </button>
+      {/* el parametro que le pasaremos a la funcion siguientePokemonAccion es la que me permite tener acciones extras  en este caso le mandamos el dato para que realice el cambio de pagina desde el inicio*/}
+      <button onClick={() => dispatch(siguientePokemonAccion(20))}>
+        siguientes pokemones
+      </button>
       <ul>
-        {pokemones.map((item, index) => {
-          <li key={index}>item.name</li>;
-        })}
+        {pokemones.map((item, index) => (
+          <li key={index}>{item.name}</li>
+        ))}
       </ul>
     </div>
   );
