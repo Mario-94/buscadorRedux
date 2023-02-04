@@ -3,11 +3,12 @@ import axios from "axios";
 const dataInitial = {
     array: [],
     fetching: false,
-
+    buscado: []
 }
 const URL = `https://mario-94.github.io/pruebaJson/bd/bd.json`
 const GET_LINEAS_SUCCESS = "GET_LINEAS_SUCCESS";
 const GET_LINEAS_ERROR = "GET_LINEAS_ERROR";
+const ACTUALIZAR_LINEAS_SUCCESS = "ACTUALIZAR_LINEAS_SUCCESS";
 
 // reducers
 export default function lineasReducer(state = dataInitial, action) {
@@ -24,6 +25,13 @@ export default function lineasReducer(state = dataInitial, action) {
                 array: action.payload,
                 fetching: true
             }
+        case ACTUALIZAR_LINEAS_SUCCESS:
+            return {
+                ...state, 
+                fetching: true,
+                buscado: action.payload
+
+            }
 
         default:
             return state;
@@ -39,6 +47,14 @@ export const obtenerListaAccion = () => async (dispatch, getState) => {
             payload: res.data
         })
     } catch (error) {
-console.log(error)
+        console.log(error)
     }
+}
+export const buscadorArticulos = (datos) => (dispatch, getState) => {
+    
+    dispatch({
+        type: ACTUALIZAR_LINEAS_SUCCESS,
+        payload: datos
+
+    })
 }

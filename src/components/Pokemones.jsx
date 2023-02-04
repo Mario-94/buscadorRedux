@@ -7,7 +7,7 @@ const Pokemones = () => {
   const dispatch = useDispatch();
   // Mientras que el selector lo que me permite es entrar a la store, a rootReducer, para acceder a pokemones o cualquier valor que tenga en el cobineReducers, en este caso store.pokemones.array es como si entraramos a pokeDucks, a la data que esta en array.
   const pokemones = useSelector((store) => store.pokemones.array);
-  console.log(pokemones);
+
   return (
     <div>
       Lista de pokemones
