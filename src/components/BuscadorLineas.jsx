@@ -9,12 +9,18 @@ const BuscadorLineas = () => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-
     cargarDatos();
   };
 
   const handleChange = (e) => {
     setSearch(e.target.value);
+    if (e.key === "ENTER") {
+      e.preventDefault();
+      setSearch(e.target.value);
+    } else if (e.key === "Backspace") {
+      console.log(data.array.products);
+      setProductos(data.array.products);
+    }
   };
   function cargarDatos() {
     const result = !search
@@ -45,6 +51,7 @@ const BuscadorLineas = () => {
               name=""
               id=""
               onChange={handleChange}
+              onKeyDown={handleChange}
             />
             <button
               className="btn btn-primary mt-3"
@@ -54,11 +61,13 @@ const BuscadorLineas = () => {
             </button>
 
             <ul>
-              {console.log(productos)}
-              {data.array.products.map((item, index) => (
-                <li key={index}>{item.Descripcion1}</li>
-              ))}
-              
+              {productos ? (
+                productos.map((item, index) => (
+                  <li key={index}>{item.Descripcion1}</li>
+                ))
+              ) : (
+                <div>cargando....</div>
+              )}
             </ul>
           </form>
 
