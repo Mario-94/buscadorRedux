@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 
 import generateStore from './redux/store';
 import BuscadorLineas from './components/BuscadorLineas';
+import ContactForm from './components/ContactForm';
 
 function App() {
   const store = generateStore()
@@ -13,7 +14,8 @@ function App() {
 
     <Provider store={store}>
       <Pokemones />
-      <BuscadorLineas />
+      <ContactForm />
+      {/* <BuscadorLineas /> */}
     </Provider>
   );
 }
