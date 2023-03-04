@@ -13,8 +13,10 @@ function App() {
   return (
 
     <Provider store={store}>
-      <Pokemones />
       <ContactForm />
+      <hr />
+      <Pokemones />
+      <hr />
       {/* <BuscadorLineas /> */}
     </Provider>
   );
