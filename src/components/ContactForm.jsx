@@ -5,9 +5,11 @@ const initialForm = {
   email: "",
   subjet: "",
   comments: "",
+  buscador: "",
 };
 const validationsForm = (form) => {
   let errors = {};
+  
   let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
   let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
   let regexComments = /^.{1,255}$/;
@@ -18,19 +20,22 @@ const validationsForm = (form) => {
   }
   if (!form.email.trim()) {
     errors.email = "el campo 'email es requerido'";
-  }
-  else if (!regexEmail.test(form.name.trim())) {
+  } else if (!regexEmail.test(form.name.trim())) {
     errors.name = "El campo 'Email solo acepta correos validos'";
   }
   if (!form.subjet.trim()) {
     errors.subjet = "el campo 'Asunto es requerido'";
   }
-  
+
   if (!form.comments.trim()) {
     errors.comments = "el campo 'Debes de agrega un comentario'";
   } else if (!regexComments.test(form.name.trim())) {
     errors.name = "Debe contener menos de 255 caracteres";
   }
+  if (!form.buscador.trim()) {
+    errors.buscador = "el campo buscador tiene que tener valores";
+  }
+ 
   return errors;
 };
 const ContactForm = () => {
@@ -95,8 +100,19 @@ const ContactForm = () => {
           value={form.comments}
           required
         ></textarea>
-        <br />
         {errors.comments && <p>{errors.comments}</p>}
+        <hr />
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="buscar palabra"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={form.buscador}
+        />
+        {errors.buscador && <p>{errors.buscador}</p>}
+        <br />
         <input type="submit" value="Enviar" />
       </form>
     </div>
