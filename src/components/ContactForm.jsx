@@ -104,7 +104,7 @@ const ContactForm = () => {
         <hr />
         <input
           type="text"
-          name=""
+          name="buscador"
           id=""
           placeholder="buscar palabra"
           onChange={handleChange}
